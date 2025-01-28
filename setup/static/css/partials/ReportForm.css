@@ -1,17 +1,26 @@
 :root {
     --primary-color: white;
-    --secondary-color: #3C6B6B; /* Cor principal esverdeada */
+    --secondary-color: #3C6B6B; 
     --font-family: 'Arial', sans-serif;
-    --highlight-color: rgba(60, 179, 173, 0.15); /* Verde suave de destaque */
-    --border-color: #c8e6c9; /* Verde pastel suave */
+    --highlight-color: rgba(60, 179, 173, 0.15); 
+    --border-color: #c8e6c9; 
     --box-shadow-color: rgba(0, 100, 0, 0.1);
-    --success-color: rgb(123, 223, 146);  /* Verde claro para sucesso */
-    --error-color: rgb(151, 9, 9); /* Vermelho para erros */
+    --success-color: rgb(123, 223, 146);  
+    --error-color: rgb(151, 9, 9); 
     --transition-time: 0.3s;
-    --label-color: #5f6368; /* Cor neutra para labels */
-    --label-hover-color: #2E8B57; /* Verde escuro ao passar o mouse */
+    --label-color: #5f6368; 
+    --label-hover-color: #2E8B57; 
     --accent-color: #81c784;
-    --label-bg-color: #f9f9f9;  /* Fundo claro para evitar um contraste muito forte */
+    --label-bg-color: #f9f9f9;  
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    gap: 0;
 }
 
 #lecom_main{
@@ -19,7 +28,7 @@
 }
 #fisico_main{
     display: none;
-
+    
 }
 
 * {
@@ -49,7 +58,7 @@ p {
 }
 
 
-/* Estilo geral do formulário */
+
 #report-form {
     display: flex;
     flex-wrap: wrap;
@@ -57,14 +66,14 @@ p {
     width: 50rem;
     font-size: 1rem;
     padding: 2rem;
-    background-color: #ffffff; /* Cor de fundo suave esverdeada */
+    background-color: #ffffff; 
     border-radius: 12px;
     border: 2px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 6px 12px var(--box-shadow-color);
 }
 
-/* Estilo dos containers de cada campo de seleção */
+
 .form-selection-area-container {
     display: flex;
     flex-direction: column;
@@ -75,17 +84,17 @@ p {
     animation: fadeInUp var(--transition-time) ease-in-out;
 }
 
-/* Container para a label do campo */
+
 .form-label-container {
     display: flex;
     align-items: center;
     padding: 8px 12px;
     border-radius: 8px;
-    /* Não há mais cor no fundo do container */
+    
     transition: transform var(--transition-time), box-shadow var(--transition-time);
 }
 
-/* Imagem ao lado da label */
+
 .form-label-container > img {
     background-color: var(--highlight-color);
     border-radius: 50%;
@@ -93,7 +102,7 @@ p {
     margin-right: 10px;
 }
 
-/* Estilo da label */
+
 .form-label {
     font-family: var(--font-family);
     color: var(--label-color);
@@ -105,27 +114,27 @@ p {
     transition: color var(--transition-time);
 }
 
-/* Hover na label (sem mudança de fundo, apenas a cor do texto) */
+
 .form-label-container > img:hover {
     transform: rotate(10deg) scale(1.1);
 }
 
 .form-label-container:hover .form-label {
-    color: var(--label-hover-color);  /* Cor mais intensa ao passar o mouse */
+    color: var(--label-hover-color);  
 }
 
-/* Estilo do container de input */
+
 .form-input-container {
     display: flex;
-    flex-direction: column; /* Ajustando para coluna */
-    align-items: stretch; /* Garantindo que os inputs ocupem toda a largura */
+    flex-direction: column; 
+    align-items: stretch; 
     width: 100%;
     text-align: center;
     gap: 10px;
     animation: fadeIn var(--transition-time) ease-in-out;
 }
 
-/* Estilo do campo de upload de arquivos */
+
 #fotos_input_contaier {
     display: flex;
     align-items: center;
@@ -135,7 +144,7 @@ p {
     margin-bottom: 2rem;
 }
 
-/* Esconde o input file padrão */
+
 input[type="date"] {
     height: 100%;
 }
@@ -143,7 +152,7 @@ input[type="date"] {
     display: none;
 }
 
-/* Estilo do label de upload */
+
 .form-input-container > label {
     width: 100%;
     padding: 16px;
@@ -157,14 +166,14 @@ input[type="date"] {
     transition: background-color var(--transition-time), transform var(--transition-time), color var(--transition-time);
 }
 
-/* Hover no label de upload */
+
 .form-input-container > label:hover {
-    background-color: var(--highlight-color); /* Mantém o efeito de destaque suave */
+    background-color: var(--highlight-color); 
     color: black;
     transform: scale(1.05);
 }
 
-/* Estilo para o contêiner de imagens geradas */
+
 #image_generated_container {
     display: none;
     width: 60%;
@@ -182,14 +191,14 @@ input[type="date"] {
     transition: opacity 0.5s ease-in-out;
 }
 
-/* Estilo das imagens geradas */
+
 #image_generated_container > .img_generated {
     width: 100%;
     margin-top: 12px;
     border-radius: 8px;
 }
 
-/* Estilo do botão de fechar a visualização das imagens */
+
 #close_image_generated_container_confirm {
     position: fixed;
     top: 90%;
@@ -207,13 +216,13 @@ input[type="date"] {
     z-index: 1002;
 }
 
-/* Hover no botão de fechar */
+
 #close_image_generated_container_confirm:hover {
     transform: scale(1.1);
 }
 
-/* Estilo do botão de envio */
-#button-send-report {
+
+.button-send-report {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,13 +237,13 @@ input[type="date"] {
     margin-top: 2rem;
 }
 
-/* Hover no botão de envio */
-#button-send-report:hover {
+
+.button-send-report:hover {
     background-color: #006b63;
     transform: scale(1.05);
 }
 
-/* Estilo dos campos de input */
+
 .form-input {
     width: 100%;
     padding: 12px;
@@ -261,16 +270,16 @@ input:focus, select:focus, textarea:focus {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-width: 1200px;  /* Limita a largura máxima do container */
-    margin: 30px auto;  /* Centraliza o container com margens verticais */
-    padding: 20px;  /* Espaçamento interno */
-    background-color: #ffffff;  /* Cor de fundo branca para destacar o conteúdo */
-    border-radius: 12px;  /* Bordas arredondadas */
-    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.2);  /* Sombra suave */
-    border: 2px solid var(--border-color);  /* Borda suave no tom verde claro */
+    max-width: 1200px;  
+    margin: 30px auto;  
+    padding: 20px;  
+    background-color: #ffffff;  
+    border-radius: 12px;  
+    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.2);  
+    border: 2px solid var(--border-color);  
 }
 
-/* Animações */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -290,31 +299,42 @@ input:focus, select:focus, textarea:focus {
         transform: translateY(0);
     }
 }
-/* *{border: solid;} */
+
 
 #chekcbox_fisico_lecon_container{
     display: flex;
     align-items: center;
     justify-content: space-around;
-
-    position: absolute;
     width: 50%;
     top: 14rem;
     left: 25%;
-
+    
     z-index: 9999999;
 }
-.checkbox_fisico_lecon_labels{
-    background-color: #ffffff;
-    width: 4rem;
+.checkbox_fisico_lecom_labels:first-child{
+    color: white;
+    background-color: green;
+}
+
+.checkbox_fisico_lecom_labels{
+    background-color: white;
+    width: 6rem;
+    font-size: 1.5rem;
     color: var(--accent-color);
     font-family: var(--font-family);
+    box-shadow: 1px 1px 1px var(--box-shadow-color);
     text-align: center;
-    border: solid 1px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
 }
+.checkbox_fisico_lecom_labels:hover{
+    box-shadow: 0 8px 18px var(--box-shadow-color);
+}
+
 #checkbox_fisico_lecom_chechbox{
-    /* display: none; */
+    display: none;
 }
 
 #checkbox_fisico_lecom_chechbox:active{
 }
+

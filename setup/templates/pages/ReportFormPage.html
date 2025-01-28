@@ -1,24 +1,38 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load custom_filters %}
+{% load static %}
 {% block styles %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="stylesheet" href="{% static 'css/partials/ReportForm.css' %}">
 {% endblock styles %}
 
 {% block content %}
 
-<div id="chekcbox_fisico_lecon_container" class="form-check form-switch">
-    <label class="form-check-label checkbox_fisico_lecom_labels" for="checkbox_fisico_lecon_chechbox">Físico</label>
-    <input id="checkbox_fisico_lecon_chechbox" class="form-check-input " type="checkbox" checked>
-    <label class="form-check-label checkbox_fisico_lecom_labels" for="checkbox_fisico_lecon_chechbox">Lecom</label>
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<main>
+<div id="chekcbox_fisico_lecon_container" class="">
+    <label class="checkbox_fisico_lecom_labels" for="checkbox_fisico_lecon_chechbox">Lecom</label>
+    <input id="checkbox_fisico_lecon_chechbox" name="checkbox_fisico_lecon_chechbox" class="form-check-input " type="checkbox" checked hidden>
+    <label class="checkbox_fisico_lecom_labels" for="checkbox_fisico_lecon_chechbox">Físico</label>
 </div>
 
-<main id="fisico_main">
+<div id="fisico_main">
     <div class="container mt-5">
         <h1 class="text-center">Relatório</h1>
         <p class="text-muted text-center">Preencha os campos abaixo para gerar um relatório:</p>
         
         <form action="{% url 'SaveReportFisico' %}" data-url="{% url 'SaveReport' %}" method="post" id="report-form" enctype="multipart/form-data">
+
+            <input name="checkbox_fisico_lecon_chechbox" class="form-check-input " type="checkbox" value='false' hidden>
             {% csrf_token %}
             
             {% for field in form_fisico %}
@@ -41,36 +55,22 @@
             {% endfor %}
             
             
-            <div id="fotos_input_contaier" class="form-input-container">
-                <label for="Fotos" id="fotos_label">
-                    <p>Enviar Arquivo</p>
-                </label>
-                <input id="Fotos" type="file" multiple name="Fotos" accept="image/png, image/jpeg, image/jpg" class="form-input" />
-            </div>
-            
-            
-            <div id="image_generated_container">
-                <button id="close_image_generated_container_confirm">
-                    <img src="https://img.icons8.com/color/48/checkmark.png" alt="Confirmar" />
-                </button>
-            </div>
-            
-            
-            <button type="submit" id="button-send-report">
+            <button type="submit" class="button-send-report">
                 Enviar
                 <img src="https://img.icons8.com/?size=48&id=11849&format=png" alt="Ícone de envio" />
             </button>
         </form>
     </div>
-</main>
+</div>
 
-<main id="lecom_main">
+<div id="lecom_main">
     <div class="container mt-5">
         <h1 class="text-center">Relatório</h1>
         <p class="text-muted text-center">Preencha os campos abaixo para gerar um relatório:</p>
         
         {% load custom_filters %}
         <form action="{% url 'SaveReport' %}" data-url="{% url 'SaveReport' %}" method="post" id="report-form" enctype="multipart/form-data">
+            <input name="checkbox_fisico_lecon_chechbox" class="form-check-input " type="checkbox" checked hidden value='True'>
             {% csrf_token %}
             
             {% for field in form %}
@@ -108,32 +108,45 @@
             </div>
             
             
-            <button type="submit" id="button-send-report">
+            <button type="submit" class="button-send-report">
                 Enviar
                 <img src="https://img.icons8.com/?size=48&id=11849&format=png" alt="Ícone de envio" />
             </button>
         </form>
     </div>
+</div>
 </main>
-
 <script>
     
     const checkbox_input = document.querySelector('#checkbox_fisico_lecon_chechbox');
     const lecom_main = document.querySelector('#lecom_main');
     const fisico_main = document.querySelector('#fisico_main');
-    const checkbox_labels_fisico = document.getElementsByClassName('checkbox_fisico_lecom_labels')[0];
-    const checkbox_labels_lecom = document.getElementsByClassName('checkbox_fisico_lecom_labels')[1];
+    const checkbox_labels_fisico = document.getElementsByClassName('checkbox_fisico_lecom_labels')[1];
+    const checkbox_labels_lecom = document.getElementsByClassName('checkbox_fisico_lecom_labels')[0];
     
     
     function check_lecon_fisico() {
         if (checkbox_input.checked) { 
-            console.log('Checkbox está marcado (true)');
+            
             lecom_main.style.display = 'block'; 
-            fisico_main.style.display = 'none'; 
-        } else {
-            console.log('Checkbox não está marcado (false)');
+            fisico_main.style.display = 'none';
+
+            checkbox_labels_lecom.style.background = 'green'
+            checkbox_labels_lecom.style.color = 'white'
+            checkbox_labels_fisico.style.color = 'var(--accent-color)'
+            checkbox_labels_fisico.style.background = 'white'
+
+        } else if (!
+        
+        checkbox_input.checked) {
+
             lecom_main.style.display = 'none'; 
-            fisico_main.style.display = 'block'; 
+            fisico_main.style.display = 'block';
+
+            checkbox_labels_fisico.style.background =  'green'
+            checkbox_labels_fisico.style.color = 'white'
+            checkbox_labels_lecom.style.color = 'var(--accent-color)'
+            checkbox_labels_lecom.style.background = 'white'
         }
     }
     
@@ -141,19 +154,17 @@
     checkbox_input.addEventListener('change', check_lecon_fisico);
     
     
-    checkbox_labels_fisico.addEventListener('click', check_lecon_fisico);
-    checkbox_labels_lecom.addEventListener('click', check_lecon_fisico);
-    
-    
-    
-    
-    
-    
-    
-    
+    checkbox_labels_fisico.addEventListener('click', (e) => {
+        check_lecon_fisico()
+    });
+    checkbox_labels_lecom.addEventListener('click', (e) => {
+        check_lecon_fisico()
+        
+    });
     
     const input_file = document.getElementById('Fotos');
     const fotos_label = document.getElementById('fotos_label');
+    const fisico_fotos_label = document.getElementById('fisico_fotos_label');
     const image_generated_container = document.getElementById('image_generated_container');
     const close_image_generated_container_confirm = document.getElementById('close_image_generated_container_confirm');
     
@@ -169,6 +180,7 @@
     
     function load_files(files) {
         if (!files || files.length === 0) {
+            fotos_label.innerText = 'Nenhum arquivo selecionado';
             fotos_label.innerText = 'Nenhum arquivo selecionado';
             return;
         }
@@ -222,4 +234,5 @@
         load_files(input_file.files);
     });
 </script>
+
 {% endblock content %}

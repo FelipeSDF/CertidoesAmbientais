@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load custom_filters %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/ReportPage.css' %}">
@@ -9,7 +9,6 @@
 {% block content %}
 <div class="container">
     <h1 class="report-title">Relatório</h1>
-    
     
     <div class="report-initial">
         <p>{{ report.Reports |linebreaks}}</p>
@@ -46,7 +45,7 @@
     <div class="pdf-download">
         <p>✅ Relatório gerado com sucesso!</p>
         <a href="{{ pdf_download_url }}" download>
-            <button class="btn-download">Baixar PDF</button>
+            <button class="btn-download">Baixar</button>
         </a>
     </div>
     <div class="image-preview-section">
@@ -61,9 +60,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <script>
     const btnDetails = document.getElementById('btn-details');
