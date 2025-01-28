@@ -9,50 +9,50 @@
 {% block content %}
 
 {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <div class="alert {{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">
+        {{ message }}
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 
 
 {% if download_link %}
-    <div id="download-popup" class="download-popup">
-        <div class="popup-content">
-            <h2>Certidão Gerada!</h2>
-            <p>A certidão foi gerada com sucesso. Clique no link abaixo para baixar.</p>
-            <a href="{{ download_link }}" download id="download-btn" class="download-btn">Baixar Certidão</a>
-        </div>
+<div id="download-popup" class="download-popup">
+    <div class="popup-content">
+        <h2>Certidão Gerada!</h2>
+        <p>A certidão foi gerada com sucesso. Clique no link abaixo para baixar.</p>
+        <a href="{{ download_link }}" download id="download-btn" class="download-btn">Baixar Certidão</a>
     </div>
+</div>
 {% endif %}
 
 
 <div class="container mt-5">
     <h1 class="text-center">Certidão Ambiental</h1>
     <p class="text-muted text-center">Preencha os campos abaixo para gerar uma nova certidão:</p>
-
+    
     <form action="MakeCertificate" method="post" class="mt-4 animate__animated animate__fadeIn">
         {% csrf_token %}
-
+        
         <div class="row">
             {% for field in form %}
-                <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                        {{ field|add_class:"form-control field-animated" }}
-                        {% if field.errors %}
-                            <div class="text-danger mt-1 animate__animated animate__shakeX">
-                                {{ field.errors }}
-                            </div>
-                        {% endif %}
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    {{ field|add_class:"form-control field-animated" }}
+                    {% if field.errors %}
+                    <div class="text-danger mt-1 animate__animated animate__shakeX">
+                        {{ field.errors }}
                     </div>
+                    {% endif %}
                 </div>
+            </div>
             {% endfor %}
         </div>
-
+        
         <div class="text-center mt-4">
             <button id="send_reportform_btn" type="submit" class="btn btn-primary btn-lg btn-animated">Fazer Certidão</button>
         </div>
@@ -60,7 +60,7 @@
 </div>
 
 <script>
-    // Adiciona uma leve transição quando o campo ganha ou perde o foco
+    
     document.querySelectorAll('.field-animated').forEach(field => {
         field.addEventListener('focus', () => {
             field.classList.add('animate__pulse');
@@ -69,8 +69,8 @@
             field.classList.remove('animate__pulse');
         });
     });
-
-    // Rolagem suave para mensagens de erro (se existir)
+    
+    
     const errors = document.querySelector('.text-danger');
     if (errors) {
         errors.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -80,24 +80,24 @@
         const downloadPopup = document.getElementById('download-popup');
         const download = document.getElementById('download-btn');
         
-
+        
         
         
         if (downloadPopup) {
-            downloadPopup.style.display = 'block'; // Exibe o popup
+            downloadPopup.style.display = 'block'; 
         }
         
         download.addEventListener('click',function(e){
-        if (downloadPopup.style.display === 'block'){
-            downloadPopup.style.display = 'none'
-        }
+            if (downloadPopup.style.display === 'block'){
+                downloadPopup.style.display = 'none'
+            }
         })
-        // Fecha o popup automaticamente após 5 segundos
+        
         setTimeout(function() {
             if (downloadPopup) {
                 downloadPopup.style.display = 'none';
             }
-        }, 5000); // 5 segundos
+        }, 5000); 
     };
     
 </script>

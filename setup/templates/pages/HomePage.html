@@ -5,19 +5,19 @@
 {% block content %}
 
 {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <div class="alert {{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">
+        {{ message }}
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 
 <div class="container text-center my-5">
     <h1 class="main-title">Bem-vindo, {{request.user}}</h1>
     <p class="lead">Esta é a página inicial do sistema de Certidões Ambientais.</p>
-
+    
     <div class="row justify-content-center mt-4">
         <div class="col-12 col-md-4 mb-3">
             <a href="{% url 'ReportFormPage' %}" class="btn btn-primary w-100">Ir para Relatório</a>
@@ -26,229 +26,227 @@
             <a href="{% url 'CertificatePage' %}" class="btn btn-success w-100">Ir para Certidão Ambiental</a>
         </div>
     </div>
-
-
-<!-- Footer (Sobre) -->
-<footer class="footer">
-    <div class="container text-center">
-        <h3>Sobre o Sistema</h3>
-        <p>Este sistema tem como objetivo gerenciar e emitir certidões ambientais de forma eficiente e prática. Navegue pelas páginas para gerar relatórios e certidões.</p>
-    </div>
-</footer>
-
-{% block styles %}
-<style>
-/* Estilos gerais para a página */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fafafa; /* Fundo suave */
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h1, h3 {
-    font-weight: 600;
-    color: #333;
-}
-
-h1.main-title {
-    font-size: 2.5rem;
-    color: #2d6a4f; /* Cor verde suave para o título */
-    margin-bottom: 1rem;
-}
-
-.lead {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-/* Botões minimalistas */
-.btn {
-    border-radius: 5px;
-    padding: 15px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #388e3c;
-}
-
-.btn-success {
-    background-color: #00c853;
-    border: none;
-    color: white;
-}
-
-.btn-success:hover {
-    background-color: #00b74a;
-}
-
-/* Layout dos botões */
-.row {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.col-md-4 {
-    flex: 1;
-    max-width: 300px;
-}
-
-.mt-5 {
-    margin-top: 3rem;
-}
-
-.mt-3 {
-    margin-top: 1rem;
-}
-
-.mb-3 {
-    margin-bottom: 1rem;
-}
-
-/* Footer */
-.footer {
-    background-color: #f8f9fa;
-    padding: 30px 0;
-    margin-top: 50px;
-    border-top: 1px solid #ddd;
-}
-
-.footer h3 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.footer p {
-    color: #666;
-    font-size: 1rem;
-    line-height: 1.5;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Mensagens de erro - sem alteração */
-.custom-message {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-}
-
-.custom-message.success {
-    background-color: #4caf50;
-}
-
-.custom-message.error {
-    background-color: #f44336;
-}
-
-/* Media Queries para Responsividade */
-@media (max-width: 1200px) {
-    .container {
-        max-width: 95%;
-    }
-
-    h1.main-title {
-        font-size: 2rem;
-    }
-
-    .lead {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 992px) {
-    h1.main-title {
-        font-size: 1.8rem;
-    }
-
-    .btn {
-        font-size: 1rem;
-        padding: 12px;
-    }
-
-    .col-md-4 {
-        max-width: 100%;
-        flex: 1 1 100%;
-    }
-
-    .footer h3 {
-        font-size: 1.5rem;
-    }
-
-    .footer p {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 768px) {
-    h1.main-title {
-        font-size: 1.6rem;
-    }
-
-    .lead {
-        font-size: 0.95rem;
-    }
-
-    .btn {
-        font-size: 1rem;
-        padding: 10px;
-    }
-
-    .footer h3 {
-        font-size: 1.4rem;
-    }
-
-    .footer p {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 576px) {
-    h1.main-title {
-        font-size: 1.4rem;
-    }
-
-    .lead {
-        font-size: 0.85rem;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
-
-    .footer h3 {
-        font-size: 1.2rem;
-    }
-
-    .footer p {
-        font-size: 0.8rem;
-    }
-}
-</style>
-{% endblock %}
-
-{% endblock %}
+    
+    <footer class="footer">
+        <div class="container text-center">
+            <h3>Sobre o Sistema</h3>
+            <p>Este sistema tem como objetivo gerenciar e emitir certidões ambientais de forma eficiente e prática. Navegue pelas páginas para gerar relatórios e certidões.</p>
+        </div>
+    </footer>
+    
+    {% block styles %}
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa; 
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h3 {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        h1.main-title {
+            font-size: 2.5rem;
+            color: #2d6a4f; 
+            margin-bottom: 1rem;
+        }
+        
+        .lead {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        
+        .btn {
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #388e3c;
+        }
+        
+        .btn-success {
+            background-color: #00c853;
+            border: none;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #00b74a;
+        }
+        
+        
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .col-md-4 {
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .mt-5 {
+            margin-top: 3rem;
+        }
+        
+        .mt-3 {
+            margin-top: 1rem;
+        }
+        
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+        
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .footer h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .footer p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        
+        .custom-message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .custom-message.success {
+            background-color: #4caf50;
+        }
+        
+        .custom-message.error {
+            background-color: #f44336;
+        }
+        
+        
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            h1.main-title {
+                font-size: 2rem;
+            }
+            
+            .lead {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            h1.main-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .col-md-4 {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
+            
+            .footer h3 {
+                font-size: 1.5rem;
+            }
+            
+            .footer p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1.main-title {
+                font-size: 1.6rem;
+            }
+            
+            .lead {
+                font-size: 0.95rem;
+            }
+            
+            .btn {
+                font-size: 1rem;
+                padding: 10px;
+            }
+            
+            .footer h3 {
+                font-size: 1.4rem;
+            }
+            
+            .footer p {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1.main-title {
+                font-size: 1.4rem;
+            }
+            
+            .lead {
+                font-size: 0.85rem;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+            
+            .footer h3 {
+                font-size: 1.2rem;
+            }
+            
+            .footer p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    {% endblock %}
+    
+    {% endblock %}

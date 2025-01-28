@@ -3,24 +3,24 @@
 
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/partials/ReportPage.css' %}">
+<link rel="stylesheet" href="{% static 'css/partials/ReportPage.css' %}">
 {% endblock styles %}
 
 {% block content %}
 <div class="container">
     <h1 class="report-title">Relatório</h1>
     
-    <!-- Exibição inicial com apenas "Relatórios" -->
+    
     <div class="report-initial">
         <p>{{ report.Reports |linebreaks}}</p>
     </div>
-
-    <!-- Botão para abrir detalhes -->
+    
+    
     <button id="btn-details" class="btn-details">
         <img src="https://img.icons8.com/ios-glyphs/30/ffffff/info--v1.png" alt="Detalhes"/> Detalhes
     </button>
-
-    <!-- Popup com os detalhes -->
+    
+    
     <div id="popup-details" class="popup">
         <div class="popup-content">
             <button id="close-popup" class="btn-close-popup">
@@ -41,8 +41,8 @@
             </div>
         </div>
     </div>
-
-    <!-- Botão de download -->
+    
+    
     <div class="pdf-download">
         <p>✅ Relatório gerado com sucesso!</p>
         <a href="{{ pdf_download_url }}" download>
@@ -53,10 +53,10 @@
         <h2>Pré-visualização de Imagens</h2>
         <div id="image-preview-container">
             {% for image in images %}
-                <div class="image-card">
-                    <img src="{{ media_url }}/temp_images/{{ image }}" alt="Imagem">
-                    <p class="image-name">{{ image.name }}</p>
-                </div>
+            <div class="image-card">
+                <img src="{{ media_url }}/temp_images/{{ image }}" alt="Imagem">
+                <p class="image-name">{{ image.name }}</p>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -67,21 +67,21 @@
 
 <script>
     const btnDetails = document.getElementById('btn-details');
-const popupDetails = document.getElementById('popup-details');
-const closePopup = document.getElementById('close-popup');
-
-// Abrir popup
-btnDetails.addEventListener('click', () => {
-    popupDetails.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Desabilita scroll do body
-});
-
-// Fechar popup
-closePopup.addEventListener('click', () => {
-    popupDetails.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Habilita scroll do body
-});
-
+    const popupDetails = document.getElementById('popup-details');
+    const closePopup = document.getElementById('close-popup');
+    
+    
+    btnDetails.addEventListener('click', () => {
+        popupDetails.style.display = 'block';
+        document.body.style.overflow = 'hidden'; 
+    });
+    
+    
+    closePopup.addEventListener('click', () => {
+        popupDetails.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+    });
+    
 </script>
 
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load static %}
 {% load custom_filters %}
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/partials/ReportForm.css' %}">
+<link rel="stylesheet" href="{% static 'css/partials/ReportForm.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -17,45 +17,45 @@
     <div class="container mt-5">
         <h1 class="text-center">Relatório</h1>
         <p class="text-muted text-center">Preencha os campos abaixo para gerar um relatório:</p>
-
+        
         <form action="{% url 'SaveReportFisico' %}" data-url="{% url 'SaveReport' %}" method="post" id="report-form" enctype="multipart/form-data">
             {% csrf_token %}
             
             {% for field in form_fisico %}
-                {% if field.name != 'Reports' and field.name != 'photos' %}
-                    <section class="form-selection-area-container">
-                        <div class="form-label-container">
-                            <img src="{{ images|get_item:field.name }}" alt="Ícone relacionado a {{ field.name }}">
-                            <label for="{{ field.id_for_label }}" class="form-label">
-                                {{ field.label_tag }}
-                            </label>
-                        </div>
-
-                        <div class="form-input-container">
-                            {{ field }}
-                            {{ field.errors }}
-                            {{ field.help_text }}
-                        </div>
-                    </section>
-                {% endif %}
+            {% if field.name != 'Reports' and field.name != 'photos' %}
+            <section class="form-selection-area-container">
+                <div class="form-label-container">
+                    <img src="{{ images|get_item:field.name }}" alt="Ícone relacionado a {{ field.name }}">
+                    <label for="{{ field.id_for_label }}" class="form-label">
+                        {{ field.label_tag }}
+                    </label>
+                </div>
+                
+                <div class="form-input-container">
+                    {{ field }}
+                    {{ field.errors }}
+                    {{ field.help_text }}
+                </div>
+            </section>
+            {% endif %}
             {% endfor %}
             
-            <!-- Área de envio de imagens -->
+            
             <div id="fotos_input_contaier" class="form-input-container">
                 <label for="Fotos" id="fotos_label">
                     <p>Enviar Arquivo</p>
                 </label>
                 <input id="Fotos" type="file" multiple name="Fotos" accept="image/png, image/jpeg, image/jpg" class="form-input" />
             </div>
-
-            <!-- Contêiner de visualização de imagens -->
+            
+            
             <div id="image_generated_container">
                 <button id="close_image_generated_container_confirm">
                     <img src="https://img.icons8.com/color/48/checkmark.png" alt="Confirmar" />
                 </button>
             </div>
-
-            <!-- Botão de envio do formulário -->
+            
+            
             <button type="submit" id="button-send-report">
                 Enviar
                 <img src="https://img.icons8.com/?size=48&id=11849&format=png" alt="Ícone de envio" />
@@ -68,46 +68,46 @@
     <div class="container mt-5">
         <h1 class="text-center">Relatório</h1>
         <p class="text-muted text-center">Preencha os campos abaixo para gerar um relatório:</p>
-
+        
         {% load custom_filters %}
         <form action="{% url 'SaveReport' %}" data-url="{% url 'SaveReport' %}" method="post" id="report-form" enctype="multipart/form-data">
             {% csrf_token %}
             
             {% for field in form %}
-                {% if field.name != 'Reports' and field.name != 'photos' %}
-                    <section class="form-selection-area-container">
-                        <div class="form-label-container">
-                            <img src="{{ images|get_item:field.name }}" alt="Ícone relacionado a {{ field.name }}">
-                            <label for="{{ field.id_for_label }}" class="form-label">
-                                {{ field.label_tag }}
-                            </label>
-                        </div>
-
-                        <div class="form-input-container">
-                            {{ field }}
-                            {{ field.errors }}
-                            {{ field.help_text }}
-                        </div>
-                    </section>
-                {% endif %}
+            {% if field.name != 'Reports' and field.name != 'photos' %}
+            <section class="form-selection-area-container">
+                <div class="form-label-container">
+                    <img src="{{ images|get_item:field.name }}" alt="Ícone relacionado a {{ field.name }}">
+                    <label for="{{ field.id_for_label }}" class="form-label">
+                        {{ field.label_tag }}
+                    </label>
+                </div>
+                
+                <div class="form-input-container">
+                    {{ field }}
+                    {{ field.errors }}
+                    {{ field.help_text }}
+                </div>
+            </section>
+            {% endif %}
             {% endfor %}
             
-            <!-- Área de envio de imagens -->
+            
             <div id="fotos_input_contaier" class="form-input-container">
                 <label for="Fotos" id="fotos_label">
                     <p>Enviar Arquivo</p>
                 </label>
                 <input id="Fotos" type="file" multiple name="Fotos" accept="image/png, image/jpeg, image/jpg" class="form-input" />
             </div>
-
-            <!-- Contêiner de visualização de imagens -->
+            
+            
             <div id="image_generated_container">
                 <button id="close_image_generated_container_confirm">
                     <img src="https://img.icons8.com/color/48/checkmark.png" alt="Confirmar" />
                 </button>
             </div>
-
-            <!-- Botão de envio do formulário -->
+            
+            
             <button type="submit" id="button-send-report">
                 Enviar
                 <img src="https://img.icons8.com/?size=48&id=11849&format=png" alt="Ícone de envio" />
@@ -117,47 +117,47 @@
 </main>
 
 <script>
-// Selecionando os elementos necessários
-const checkbox_input = document.querySelector('#checkbox_fisico_lecon_chechbox');
-const lecom_main = document.querySelector('#lecom_main');
-const fisico_main = document.querySelector('#fisico_main');
-const checkbox_labels_fisico = document.getElementsByClassName('checkbox_fisico_lecom_labels')[0];
-const checkbox_labels_lecom = document.getElementsByClassName('checkbox_fisico_lecom_labels')[1];
-
-// Função para verificar o estado do checkbox
-function check_lecon_fisico() {
-    if (checkbox_input.checked) { // Verifica se o checkbox está marcado
-        console.log('Checkbox está marcado (true)');
-        lecom_main.style.display = 'block'; // Mostra o elemento
-        fisico_main.style.display = 'none'; // Mostra o elemento
-    } else {
-        console.log('Checkbox não está marcado (false)');
-        lecom_main.style.display = 'none'; // Esconde o elemento
-        fisico_main.style.display = 'block'; // Esconde o elemento
+    
+    const checkbox_input = document.querySelector('#checkbox_fisico_lecon_chechbox');
+    const lecom_main = document.querySelector('#lecom_main');
+    const fisico_main = document.querySelector('#fisico_main');
+    const checkbox_labels_fisico = document.getElementsByClassName('checkbox_fisico_lecom_labels')[0];
+    const checkbox_labels_lecom = document.getElementsByClassName('checkbox_fisico_lecom_labels')[1];
+    
+    
+    function check_lecon_fisico() {
+        if (checkbox_input.checked) { 
+            console.log('Checkbox está marcado (true)');
+            lecom_main.style.display = 'block'; 
+            fisico_main.style.display = 'none'; 
+        } else {
+            console.log('Checkbox não está marcado (false)');
+            lecom_main.style.display = 'none'; 
+            fisico_main.style.display = 'block'; 
+        }
     }
-}
-
-// Adicionando eventos ao checkbox para monitorar mudanças
-checkbox_input.addEventListener('change', check_lecon_fisico);
-
-// (Opcional) Se quiser monitorar também os labels
-checkbox_labels_fisico.addEventListener('click', check_lecon_fisico);
-checkbox_labels_lecom.addEventListener('click', check_lecon_fisico);
-
-
-
-
-
-
-
-
-
+    
+    
+    checkbox_input.addEventListener('change', check_lecon_fisico);
+    
+    
+    checkbox_labels_fisico.addEventListener('click', check_lecon_fisico);
+    checkbox_labels_lecom.addEventListener('click', check_lecon_fisico);
+    
+    
+    
+    
+    
+    
+    
+    
+    
     const input_file = document.getElementById('Fotos');
     const fotos_label = document.getElementById('fotos_label');
     const image_generated_container = document.getElementById('image_generated_container');
     const close_image_generated_container_confirm = document.getElementById('close_image_generated_container_confirm');
-
-    // Função para atualizar o campo <input> com arquivos
+    
+    
     function updateInputFiles(files) {
         const dataTransfer = new DataTransfer();
         for (let i = 0; i < files.length; i++) {
@@ -165,59 +165,59 @@ checkbox_labels_lecom.addEventListener('click', check_lecon_fisico);
         }
         input_file.files = dataTransfer.files;
     }
-
-    // Função para exibir pré-visualizações das imagens
+    
+    
     function load_files(files) {
         if (!files || files.length === 0) {
             fotos_label.innerText = 'Nenhum arquivo selecionado';
             return;
         }
-
+        
         image_generated_container.style.display = 'flex';
-        image_generated_container.innerHTML = ''; // Limpa o container
-
+        image_generated_container.innerHTML = ''; 
+        
         for (let file of files) {
             const reader = new FileReader();
-
+            
             reader.onload = function (e) {
                 const img = document.createElement('img');
                 img.src = e.target.result;
-                img.classList.add('img_generated'); // Classe para estilização
+                img.classList.add('img_generated'); 
                 image_generated_container.appendChild(img);
             };
-
+            
             reader.readAsDataURL(file);
             fotos_label.innerText = files.length + ' foto(s) selecionada(s)';
         }
-
-        image_generated_container.appendChild(close_image_generated_container_confirm); // Adiciona o botão de fechar
+        
+        image_generated_container.appendChild(close_image_generated_container_confirm); 
     }
-
-    // Eventos de drag-and-drop
+    
+    
     fotos_label.addEventListener('dragover', function (e) {
-        e.preventDefault(); // Previne o comportamento padrão
-        fotos_label.classList.add('dragover'); // Estilo ao arrastar
+        e.preventDefault(); 
+        fotos_label.classList.add('dragover'); 
     });
-
+    
     fotos_label.addEventListener('dragleave', function () {
-        fotos_label.classList.remove('dragover'); // Remove o estilo ao sair
+        fotos_label.classList.remove('dragover'); 
     });
-
+    
     fotos_label.addEventListener('drop', function (e) {
         e.preventDefault();
-        fotos_label.classList.remove('dragover'); // Remove o estilo
-
-        const files = e.dataTransfer.files; // Obtém os arquivos arrastados
-        load_files(files); // Exibe as imagens
-        updateInputFiles(files); // Atualiza o campo <input> com os arquivos
+        fotos_label.classList.remove('dragover'); 
+        
+        const files = e.dataTransfer.files; 
+        load_files(files); 
+        updateInputFiles(files); 
     });
-
-    // Evento para fechar o contêiner de imagens
+    
+    
     close_image_generated_container_confirm.addEventListener('click', function () {
         image_generated_container.style.display = 'none';
     });
-
-    // Evento para carregar imagens ao selecionar diretamente
+    
+    
     input_file.addEventListener('change', function () {
         load_files(input_file.files);
     });
