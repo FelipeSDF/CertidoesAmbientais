@@ -1,0 +1,117 @@
+* {
+    /* border: solid 1px; */
+}
+ion-icon{
+    font-size: 35px;
+}
+#report-global-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    height: 100vh;
+}
+#card-report-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    width: 100%;
+    min-width: 400px;
+
+    font-family: var(--font-family);
+    text-align: start;
+
+    font-size: x-large;
+    padding: 20px;
+}
+
+.card-report-title-container {
+    width: 75%;
+    padding: 20px;}
+
+.card-report-report-container {
+    width: 75%;
+    padding: 20px;
+}
+
+.card-report-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 75%;
+    min-width: 400px;
+
+    font-family: var(--font-family);
+    text-align: center;
+
+    font-size: x-large;
+}
+
+.card-report-options-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.card-report-options-buttons:hover{
+    background-color: var(--color-primary);
+    opacity: 1;
+    scale: 1.2;
+    transition: 0.5s ease-in-out;
+    color: white;
+}
+.card-report-options-buttons > h5 {
+   text-align: center;
+   align-content: center;
+   font-size: large;
+
+}
+
+#card-report-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    height: 50%;
+
+}
+
+#card-report-image-content{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    width: 100%;
+}
+
+.card-report-image{
+    width: 300px;
+    border-radius: 10px;
+    border: var(--color-primary) solid 5px;
+    box-shadow: 3px 3px 10px;
+    opacity: 0.8;
+}
+.card-report-image:hover{
+    transform: scale(1.2);
+    transition: 1s ease-in-out;
+    opacity: 1;
+
+}
+
+.card-report-image>img {
+    width: 100%;
+    height: 100%;
+}

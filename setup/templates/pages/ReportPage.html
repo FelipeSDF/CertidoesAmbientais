@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/partials/ReportPage.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="container">
+    <h1 class="report-title">Relatório</h1>
+    
+    <!-- Exibição inicial com apenas "Relatórios" -->
+    <div class="report-initial">
+        <p>{{ report.Reports |linebreaks}}</p>
+    </div>
+
+    <!-- Botão para abrir detalhes -->
+    <button id="btn-details" class="btn-details">
+        <img src="https://img.icons8.com/ios-glyphs/30/ffffff/info--v1.png" alt="Detalhes"/> Detalhes
+    </button>
+
+    <!-- Popup com os detalhes -->
+    <div id="popup-details" class="popup">
+        <div class="popup-content">
+            <button id="close-popup" class="btn-close-popup">
+                <img src="https://www.iconsdb.com/icons/preview/red/close-window-xxl.png" alt="Fechar"/>
+            </button>
+            <h2>Detalhes do Relatório</h2>
+            <div class="report-details">
+                <p><span>Número:</span> {{ report.number }}</p>
+                <p><span>Data:</span> {{ report.data }}</p>
+                <p><span>Local:</span> {{ report.local }}</p>
+                <p><span>Bairro:</span> {{ report.bairro }}</p>
+                <p><span>Unidade:</span> {{ report.unidade }}</p>
+                <p><span>Observações:</span> {{ report.obs }}</p>
+                <p><span>Pavimentação:</span> {{ report.pavimentation }}</p>
+                <p><span>Eletricidade:</span> {{ report.eletricity }}</p>
+                <p><span>Iluminação:</span> {{ report.ilumination }}</p>
+                <p><span>Quantidade de casas:</span> {{ report.quantity_houses }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de download -->
+    <div class="pdf-download">
+        <p>✅ Relatório gerado com sucesso!</p>
+        <a href="{{ pdf_download_url }}" download>
+            <button class="btn-download">Baixar PDF</button>
+        </a>
+    </div>
+    <div class="image-preview-section">
+        <h2>Pré-visualização de Imagens</h2>
+        <div id="image-preview-container">
+            {% for image in images %}
+                <div class="image-card">
+                    <img src="{{ media_url }}/temp_images/{{ image }}" alt="Imagem">
+                    <p class="image-name">{{ image.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    const btnDetails = document.getElementById('btn-details');
+const popupDetails = document.getElementById('popup-details');
+const closePopup = document.getElementById('close-popup');
+
+// Abrir popup
+btnDetails.addEventListener('click', () => {
+    popupDetails.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Desabilita scroll do body
+});
+
+// Fechar popup
+closePopup.addEventListener('click', () => {
+    popupDetails.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Habilita scroll do body
+});
+
+</script>
+
+{% endblock %}

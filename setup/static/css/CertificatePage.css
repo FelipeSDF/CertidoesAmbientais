@@ -1,0 +1,212 @@
+:root {
+    --primary-color: #f1f8e9; /* Verde muito suave para o fundo */
+    --secondary-color: #2e7d32; /* Verde mais suave e elegante */
+    --accent-color: #81c784; /* Verde suave para destaques */
+    --font-family: 'Arial', sans-serif;
+    --border-color: #c8e6c9; /* Verde pastel suave */
+    --box-shadow-color: rgba(0, 100, 0, 0.1);
+    --hover-color: #66bb6a; /* Verde suave para interações */
+    --error-color: #d32f2f; /* Vermelho para erros */
+    --transition-time: 0.3s;
+}
+
+.container.mt-5 {
+    max-width: 1200px;  /* Limita a largura máxima do container */
+    margin: 30px auto;  /* Centraliza o container com margens verticais */
+    padding: 20px;  /* Espaçamento interno */
+    background-color: #ffffff;  /* Cor de fundo branca para destacar o conteúdo */
+    border-radius: 12px;  /* Bordas arredondadas */
+    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.2);  /* Sombra suave */
+    border: 2px solid var(--border-color);  /* Borda suave no tom verde claro */
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+form {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px var(--box-shadow-color);
+    transition: transform var(--transition-time), box-shadow var(--transition-time);
+}
+
+form:hover {
+    box-shadow: 0 8px 18px var(--box-shadow-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--secondary-color);
+    transition: border-color var(--transition-time), box-shadow var(--transition-time);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+#send_reportform_btn{
+    background-color: green;
+    border: #2e7d32;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 14px 22px;
+    transition: background-color var(--transition-time), transform var(--transition-time);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+.error {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.field-animated {
+    animation: fadeInUp var(--transition-time) ease-in-out;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* POPUP */
+
+/* Estilo do popup */
+.download-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white; /* Fundo branco para um contraste suave */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+    animation: popupFadeIn 0.5s ease-out;
+}
+
+.popup-content h2 {
+    font-size: 1.5rem;
+    color: #388e3c; /* Verde suave */
+    margin-bottom: 10px;
+}
+
+.popup-content p {
+    font-size: 1rem;
+    color: #555; /* Cor de texto neutra */
+    margin-bottom: 20px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #66bb6a; /* Verde mais suave e claro */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #4caf50; /* Verde mais forte no hover */
+}
+
+/* Animação para o popup */
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Efeito de sombra suave para o fundo */
+.download-popup::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    animation: fadeInOverlay 0.3s ease-out;
+}
+
+/* Animação suave de fundo */
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

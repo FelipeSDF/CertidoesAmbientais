@@ -1,0 +1,117 @@
+* {
+    /* border: solid 1px; */
+}
+
+#report-form {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 70%;
+    height: 100vh;
+    padding: 30px;
+
+    /* background-color: var(--color-secondary); */
+
+    /* background-color: green; */
+
+    font-size: xx-large;
+}
+
+.form-selection-area-container {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    flex-direction: column;
+    width: 45%;
+    height: 200px;
+    /* background-color: red; */
+}
+
+.form-label-container {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: white;
+    width: 100%;
+
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.form-label-container>img {
+    /* background-color: rgba(188, 135, 135, 0.49); */
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.form-label {
+    background-color: white;
+    font-family: var(--font-family);
+    color: var(--color-secondary);
+}
+
+.form-input-container {
+    background-color: white;
+    width: 100%;
+}
+
+.form-input {
+    background-color: white;
+    width: 97%;
+    font-size: xx-large;
+    color: var(--color-secondary);
+    font-family: var(--font-family);
+    padding: 10px;
+    text-align: center;
+}
+
+.small-input {
+    width: 50%;
+}
+
+.area-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-size: xx-large;
+    width: 90%;
+    margin: auto;
+    color: var(--color-secondary);
+
+    font-family: var(--font-family);
+}
+
+.form-select>option {}
+
+.form-button-sent-area {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+#button-send-report {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: xx-large;
+    width: 70%;
+    height: 100px;
+    background-color: var(--color-secondary);
+    border-radius: 10px;
+    color: white;
+}
